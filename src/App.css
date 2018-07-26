@@ -1,5 +1,16 @@
+@import '~antd/dist/antd.css';
+html,body,#root{
+  height: 100%;
+}
 .App {
   text-align: center;
+}
+
+.App-header{
+  background-color: #42C57A;
+  color: #fff;
+  height: 60px;
+  line-height: 60px;
 }
 
 .App-logo {
@@ -7,20 +18,26 @@
   height: 80px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
 .App-title {
   font-size: 1.5em;
 }
 
-.App-intro {
-  font-size: large;
+.body{
+  height: calc(100% - 60px);
 }
+.siderBar{
+  width: 160px;
+  height: 100%;
+  float: left;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.content{
+  width: calc(100% - 160px);
+  height: 100%;
+  float: right;
+}
+
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

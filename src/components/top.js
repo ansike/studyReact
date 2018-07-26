@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export default class Top extends Component{
     render(){
         return (
-            <div>top</div>
+            <div className="App-header">top</div>
         )
     }
 }
