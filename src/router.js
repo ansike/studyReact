@@ -6,7 +6,7 @@ import Inbox from './components/inbox';
 
 export default [
     {
-        path: "/",
+        path: "/home",
         name: "home",
         component: Home
     },
