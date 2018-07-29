@@ -5,45 +5,95 @@ import { Link } from 'react-router-dom';
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
-export default class Sider extends Component{
+
+class Children extends Component{
+
+    constructor(props){
+        super(props);
+    }
+    getData = () => {
+        return [
+            {
+                id:1001,
+                name:'系统管理',
+                type:'tab',
+                children:[
+                    {
+                        id:1002,
+                        type:'page',
+                        name:'首页',
+                        routerPath:'/home',
+                        routerName:'home',
+                        parentId:1001
+                    },{
+                        id:1003,
+                        type:'page',
+                        name:'关于我们',
+                        routerPath:'/about',
+                        routerName:'about',
+                        parentId:1001
+                    },{
+                        id:1004,
+                        type:'page',
+                        name:'indexBox',
+                        routerPath:'/inbox',
+                        routerName:'inbox',
+                        parentId:1001
+                    }
+                ]
+            },
+            {
+                id:2001,
+                name:'系统管理',
+                type:'tab',
+                children:[
+                    {
+                        id:2001,
+                        type:'page',
+                        name:'关于我们',
+                        routerPath:'/about',
+                        routerName:'about',
+                        parentId:1001
+                    }
+                ]
+            }
+
+        ]
+    }
+
     handleClick = (e) => {
         console.log('click ', e);
     }
+    render(){
+        let data = this.getData();
+        let doms1 = [];
+        for(let i = 0;i<data.length;i++){
+            const vi = data[i].children.map((items) => {
+                return <Menu.Item className="ant-menu-item" key = {items.id} data-id={items.id}> <Link to={items.routerPath}>{items.name}</Link></Menu.Item>
+            }) 
+            doms1.push(<SubMenu key={data[i].id} title={<span><Icon type="mail" /><span>{data[i].name}</span></span>}>
+                {vi}  
+             </SubMenu>) 
+        }
+        let dom2 = (<Menu
+                        onClick={this.handleClick}
+                        style={{ width: 160, height:'100%'}}
+                        defaultSelectedKeys={['1002']}
+                        defaultOpenKeys={['1001']}
+                        mode="inline"
+                    >
+                        {doms1}
+                    </Menu>)
+        return dom2
+        
+    }
+}
 
+export default class Sider extends Component{
     render(){
         return (
             <div className="Sider">
-                <Menu
-                    onClick={this.handleClick}
-                    style={{ width: 256 }}
-                    defaultSelectedKeys={['1']}
-                    defaultOpenKeys={['sub1']}
-                    mode="inline"
-                >
-                    <SubMenu key="sub1" title={<span><Icon type="mail" /><span>Navigation One</span></span>}>
-                        <MenuItemGroup key="g1" title="Item 1">
-                            <Menu.Item key = "1" > <Link exact="true" to="/home">Home</Link></Menu.Item>
-                            <Menu.Item key="2"><Link to="/about">About</Link></Menu.Item>
-                        </MenuItemGroup>
-                        <MenuItemGroup key="g2" title="Item 2">
-                            <Menu.Item key="3"><Link to="/inbox">inbox</Link></Menu.Item>
-                        </MenuItemGroup>
-                    </SubMenu>
-                    <SubMenu key="sub2" title={<span><Icon type="appstore" /><span>Navigation Two</span></span>}>
-                        <Menu.Item key="5">Option 5</Menu.Item>
-                        <Menu.Item key="6">Option 6</Menu.Item>
-                        <SubMenu key="sub3" title="Submenu">
-                            <Menu.Item key="7">Option 7</Menu.Item>
-                            <Menu.Item key="8">Option 8</Menu.Item>
-                        </SubMenu>
-                    </SubMenu>
-                    <SubMenu key="sub4" title={<span><Icon type="setting" /><span>Navigation Three</span></span>}>
-                        <Menu.Item key="9">Option 9</Menu.Item>
-                        <Menu.Item key="10">Option 10</Menu.Item>
-                        <Menu.Item key="11">Option 11</Menu.Item>
-                        <Menu.Item key="12">Option 12</Menu.Item>
-                    </SubMenu>
-                </Menu>
+                <Children />
             </div>
         )
     }

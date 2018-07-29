@@ -11,6 +11,7 @@ html,body,#root{
   color: #fff;
   height: 60px;
   line-height: 60px;
+  padding: 0 80px;
 }
 
 .App-logo {
@@ -33,7 +34,7 @@ html,body,#root{
   overflow: hidden;
 }
 .content{
-  width: calc(100% - 260px);
+  width: calc(100% - 160px);
   height: 100%;
   float: right;
 }
@@ -42,4 +43,10 @@ html,body,#root{
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
 }
