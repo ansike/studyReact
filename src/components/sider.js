@@ -23,21 +23,21 @@ class Children extends Component{
                         id:1002,
                         type:'page',
                         name:'首页',
-                        routerPath:'/',
+                        routerPath:'/home',
                         routerName:'home',
                         parentId:1001
                     },{
                         id:1003,
                         type:'page',
                         name:'关于我们',
-                        routerPath:'/about',
+                        routerPath:'/home/about',
                         routerName:'about',
                         parentId:1001
                     },{
                         id:1004,
                         type:'page',
                         name:'indexBox',
-                        routerPath:'/inbox',
+                        routerPath:'/home/inbox',
                         routerName:'inbox',
                         parentId:1001
                     }
@@ -52,7 +52,7 @@ class Children extends Component{
                         id:2001,
                         type:'page',
                         name:'关于我们',
-                        routerPath:'/about',
+                        routerPath:'/sabouts',
                         routerName:'about',
                         parentId:1001
                     }

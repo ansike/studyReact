@@ -2,31 +2,50 @@ import React, { Component } from "react";
 import {
   BrowserRouter as Router,
   Route,
+  Redirect
 } from 'react-router-dom';
 // import logo from "./logo.svg";
 import "./App.css";
-import routes  from "./router";
-import Header from "./components/header";
-import Sider from "./components/sider";
+
+import Home from './components/homes';
+import About from './components/about';
+import Inbox from './components/inbox';
+let ro = [
+    {
+        path: "/home",
+        name: "homes",
+        exact:false,
+        component: Home
+    },
+    {
+        path: "/sabouts",
+        name: "about",
+        exact: true,
+        component: About
+    },
+    {
+        path: "/sinboxs",
+        name: "inbox",
+        exact: true,
+        component: Inbox
+    }
+]
 
 class App extends Component {
   render() {
     return (
       <Router>
         <div style={{ height:'100%' }}>  
-          <Header />
-          <div className="body">
-            <Sider />
-            <div className="content">
-              {routes.map((route, index) => (
+          <div >
+            <Route path="/" render={()=><Redirect to="/home"/>}/>
+            {ro.map((route, index) => (
                 <Route
-                  key={index}
-                  path={route.path}
-                  exact={route.exact}
-                  component={route.component}
+                key={index}
+                path={route.path}
+                exact={route.exact}
+                component={route.component}
                 />
-              ))}
-            </div>
+            ))}
           </div>
         </div>
       </Router>

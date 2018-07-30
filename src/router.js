@@ -6,21 +6,21 @@ import Inbox from './components/inbox';
 
 export default [
     {
-        path: "/",
+        path: "/home",
         name: "home",
         exact:true,
         component: Home
     },
     {
-        path: "/about",
+        path: "/home/about",
         name: "about",
         exact: false,
         component: About
     },
     {
-        path: "/inbox",
+        path: "/home/inbox",
         name: "inbox",
-        exact: false,
+        exact: true,
         component: Inbox
     }
 ]
