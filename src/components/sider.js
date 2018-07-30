@@ -11,6 +11,7 @@ class Children extends Component{
     constructor(props){
         super(props);
     }
+
     getData = () => {
         return [
             {
@@ -22,7 +23,7 @@ class Children extends Component{
                         id:1002,
                         type:'page',
                         name:'首页',
-                        routerPath:'/home',
+                        routerPath:'/',
                         routerName:'home',
                         parentId:1001
                     },{
@@ -69,7 +70,7 @@ class Children extends Component{
         let doms1 = [];
         for(let i = 0;i<data.length;i++){
             const vi = data[i].children.map((items) => {
-                return <Menu.Item className="ant-menu-item" key = {items.id} data-id={items.id}> <Link to={items.routerPath}>{items.name}</Link></Menu.Item>
+                return <Menu.Item className="ant-menu-item" key = {items.routerPath} data-id={items.id}> <Link to={items.routerPath}>{items.name}</Link></Menu.Item>
             }) 
             doms1.push(<SubMenu key={data[i].id} title={<span><Icon type="mail" /><span>{data[i].name}</span></span>}>
                 {vi}  
@@ -78,7 +79,7 @@ class Children extends Component{
         let dom2 = (<Menu
                         onClick={this.handleClick}
                         style={{ width: 160, height:'100%'}}
-                        defaultSelectedKeys={['1002']}
+                        defaultSelectedKeys={[window.location.pathname]}
                         defaultOpenKeys={['1001']}
                         mode="inline"
                     >
